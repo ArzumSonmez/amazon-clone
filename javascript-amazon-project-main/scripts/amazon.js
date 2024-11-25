@@ -1,8 +1,12 @@
-import {cart} from '../data/cart.js';
+//imported files
+import {cart, addToCart} from '../data/cart.js';
 import { products } from '../data/products.js';
 
+
+//creating an undefined productsHTML to add the values we find after the loop.
 let productsHTML = '';
 
+//looping through the products array to get each product and values 
 products.forEach((product) => {
   productsHTML += ` <div class="product-container">
           <div class="product-image-container">
@@ -56,37 +60,22 @@ products.forEach((product) => {
         </div>`;
 });
 
-document.querySelector('.js-products-grid').innerHTML = productsHTML;
+function updateCartQuantity(){
+  let cartQuantity = 0;
 
-document.querySelectorAll('.js-add-to-cart')
-  .forEach((button) => {
-    button.addEventListener('click', () => {
-      const productId = button.dataset.productId;
-
-      let matchingItem;
-
-      cart.forEach((item) => {
-        if(productId === item)
-        {
-          matchingItem = item;
-        }});
-
-        if(matchingItem) {
-          matchingItem.quantity += 1;
-        }else {
-          cart.push({
-            productId: productId,
-            quantity: 1
-          });
-        }
-
-        let cartQuantity = 0;
-
-        cart.forEach((item) => {
-          cartQuantity += item.quantity;
+        cart.forEach((cartItem) => {
+          cartQuantity += cartItem.quantity;
         });
 
         document.querySelector('.js-cart-quantity')
         .innerHTML = cartQuantity;
+}
+//querySelectorAll applies the changes to every button not just one.
+document.querySelectorAll('.js-add-to-cart')
+  .forEach((button) => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+        addToCart(productId);
+        updateCartQuantity();
     });
   });
