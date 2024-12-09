@@ -1,14 +1,16 @@
 //imported files
 import {cart, addToCart} from '../data/cart.js';
-import { products } from '../data/products.js';
+import {products} from '../data/products.js';
 
 
 //creating an undefined productsHTML to add the values we find after the loop.
 let productsHTML = '';
 
 //looping through the products array to get each product and values 
+
 products.forEach((product) => {
-  productsHTML += ` <div class="product-container">
+  productsHTML += `
+  <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
               src="${product.image}">
@@ -60,6 +62,9 @@ products.forEach((product) => {
         </div>`;
 });
 
+document.querySelector('.js-products-grid')
+.innerHTML = productsHTML; 
+
 function updateCartQuantity(){
   let cartQuantity = 0;
 
@@ -79,3 +84,5 @@ document.querySelectorAll('.js-add-to-cart')
         updateCartQuantity();
     });
   });
+
+  export { productsHTML }; 
