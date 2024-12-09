@@ -6,7 +6,6 @@ export const cart = [{
   quantity: 1
 }];
 
-
 //putting the forEach loop that works as a matching and checking mechanism into it's own function to organize code.
 export function addToCart(productId) {
   let matchingItem;
