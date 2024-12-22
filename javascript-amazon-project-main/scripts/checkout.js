@@ -115,13 +115,15 @@ document.querySelectorAll('.js-delete-link')
 });
 
 function updateCartQuantity(){
-  let totalQuantity = 0;
+  let updatedCartQuantity = 0;
+    cart.forEach((cartItem) => {
+      updatedCartQuantity += cartItem.quantity;
+    });
 
-        cart.forEach((cartItem) => {
-          totalQuantity += cartItem.quantity;
-        });
-
-        document.querySelector('.js-cart-quantity')
-        .innerHTML = totalQuantity;
-}
-
+  document.querySelector('.js-checkout-header-updater').innerHTML = `
+        <div class="checkout-header-middle-section">
+          Checkout (<a class="return-to-home-link js-checkout-header-updater" href="amazon.html">
+            ${updatedCartQuantity}
+          </a>)
+        </div>`;
+  };
