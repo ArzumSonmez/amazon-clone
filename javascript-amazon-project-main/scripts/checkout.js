@@ -113,3 +113,15 @@ document.querySelectorAll('.js-delete-link')
     container.remove();
   });
 });
+
+function updateCartQuantity(){
+  let totalQuantity = 0;
+
+        cart.forEach((cartItem) => {
+          totalQuantity += cartItem.quantity;
+        });
+
+        document.querySelector('.js-cart-quantity')
+        .innerHTML = totalQuantity;
+}
+
