@@ -11,7 +11,8 @@ const deliveryDate = today.add(7, 'days');
 deliveryDate.format('dddd, MMMM D');
 */
 
-let cartSummaryHTML = '';
+function renderOrderSummary() {
+  let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
   //putting back ticks and copying the html to generate it for every product using ${}.
@@ -158,5 +159,9 @@ function updateCartQuantity(){
     element.addEventListener('click', () => {
       const {productId, deliveryOptionId} = element.dataset;
       updateDeliveryOption(productId, deliveryOptionId);
+      renderOrderSummary();
     });
   });
+}
+
+renderOrderSummary();
