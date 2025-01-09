@@ -1,9 +1,9 @@
 import { cart } from "../../data/cart.js";
-import { products } from "../../data/products.js";
+import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import { removeFromCart } from "../../data/cart.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { deliveryOptions } from "../../data/deliveryOptions.js";
+import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 import { updateDeliveryOption } from "../../data/cart.js";
 
 /*const today = dayjs();
@@ -19,23 +19,12 @@ cart.forEach((cartItem) => {
 
   const productId = cartItem.productId;
 
-  let matchingProduct;
-
-  products.forEach((product) => {
-    if (product.id === productId) {
-      matchingProduct = product;
-    }
-  });
+  const matchingProduct = getProduct(productId);
 
   const deliveryOptionId = cartItem.deliveryOptionId;
 
-  let deliveryOption;
+  const deliveryOption = getDeliveryOption(deliveryOptionId);
 
-  deliveryOptions.forEach((option) => {
-    if (option.id === deliveryOptionId) {
-      deliveryOption = option;
-    }
-  });
   
   const today = dayjs();
     const deliveryDate = today.add(
@@ -148,8 +137,8 @@ function updateCartQuantity(){
 
   document.querySelector('.js-checkout-header-updater').innerHTML = `
         <div class="checkout-header-middle-section">
-        <a class="return-to-home-link js-checkout-header-updater" href="amazon.html">
-          ${updatedCartQuantity} items</a>
+        <a class="return-to-home-link" href="amazon.html">
+        ${updatedCartQuantity} items</a>
         </div>`;
   };
   
