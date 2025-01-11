@@ -25,4 +25,15 @@ export function getDeliveryOption(deliveryOptionId) {
   });
 
   return deliveryOption || deliveryOptions[0];
+
+}
+
+export function calculateDeliveryDate(deliveryOption) {
+  const today = dayjs();
+  const deliveryDate = today.add(
+    deliveryOption.deliveryDays,
+    'days'
+  ); 
+  const dateString = deliveryDate.format('dddd, MMMM D');
+
 }
