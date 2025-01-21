@@ -7,17 +7,17 @@ describe('test suite: addToCart', () => {
 
     spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify([{
-        productId: '5968897c-4d27-4872-89f6-5bcb052746d7',
+        productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
         quantity: 1,
         deliveryOptionId: '1'
       }]); //sets the cart for testing
     });
     loadFromStorage();
 
-    addToCart('5968897c-4d27-4872-89f6-5bcb052746d7');
+    addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6');
     expect(cart.length).toEqual(1);
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
-    expect(cart[0].productId).toEqual('5968897c-4d27-4872-89f6-5bcb052746d7');
+    expect(cart[0].productId).toEqual('e43638ce-6aa0-4b85-b27f-e1d07eb678c6');
     expect(cart[0].quantity).toEqual(2);
   });
 
@@ -31,10 +31,10 @@ describe('test suite: addToCart', () => {
     });
     loadFromStorage();
 
-    addToCart('5968897c-4d27-4872-89f6-5bcb052746d7');
+    addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6');
     expect(cart.length).toEqual(1);
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
-    expect(cart[0].productId).toEqual('5968897c-4d27-4872-89f6-5bcb052746d7');
+    expect(cart[0].productId).toEqual('e43638ce-6aa0-4b85-b27f-e1d07eb678c6');
     expect(cart[0].quantity).toEqual(1);
   });
 });
