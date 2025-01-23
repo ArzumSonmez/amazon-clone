@@ -82,13 +82,3 @@ document.querySelectorAll('.js-add-to-cart')
         updateCartQuantity();
     });
   });
-
-  export { productsHTML }; 
-
-  if (updatedCartQuantity !== 0) {
-    const cartQuantityElement = document.querySelector('.js-cart-quantity');
-    if (cartQuantityElement) {
-      cartQuantityElement.innerHTML = updatedCartQuantity;
-    }
-  }
-  
