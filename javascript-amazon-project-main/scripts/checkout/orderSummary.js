@@ -9,6 +9,8 @@ import { renderPaymentSummary } from "./paymentSummary.js";
 
 
 export function renderOrderSummary() {
+
+  updateCartQuantity();
   let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
@@ -124,11 +126,14 @@ function updateCartQuantity(){
       updatedCartQuantity += cartItem.quantity;
     });
 
-  document.querySelector('.js-checkout-header-updater').innerHTML = `
+  /*document.querySelector('.js-checkout-header-updater').innerHTML = `
         <div class="checkout-header-middle-section">
         <a class="return-to-home-link" href="amazon.html">
         ${updatedCartQuantity} items</a>
-        </div>`;
+        </div>`;*/
+
+   document.querySelector('.js-checkout-header-updater').innerHTML = `${updatedCartQuantity} items`;
+
   };
   
   updateCartQuantity();

@@ -3,7 +3,7 @@ import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { formatCurrency } from "./utils/money.js";
 
-
+updateCartQuantity();
 //creating an undefined productsHTML to add the values we find after the loop.
 let productsHTML = '';
 
@@ -67,14 +67,11 @@ document.querySelector('.js-products-grid')
 .innerHTML = productsHTML; 
 
 function updateCartQuantity(){
-  let cartQuantity = 0;
-
-        cart.forEach((cartItem) => {
-          cartQuantity += cartItem.quantity;
-        });
-
-        document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
+  let updatedCartQuantity = 0;
+    cart.forEach((cartItem) => {
+      updatedCartQuantity += cartItem.quantity;
+    });
+    document.querySelector('.js-cart-quantity').innerHTML = updatedCartQuantity;
 }
 //querySelectorAll applies the changes to every button not just one.
 document.querySelectorAll('.js-add-to-cart')
@@ -87,3 +84,11 @@ document.querySelectorAll('.js-add-to-cart')
   });
 
   export { productsHTML }; 
+
+  if (updatedCartQuantity !== 0) {
+    const cartQuantityElement = document.querySelector('.js-cart-quantity');
+    if (cartQuantityElement) {
+      cartQuantityElement.innerHTML = updatedCartQuantity;
+    }
+  }
+  
