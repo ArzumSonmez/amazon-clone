@@ -13,7 +13,7 @@ export function renderOrderSummary() {
   updateCartQuantity();
   let cartSummaryHTML = '';
 
-cart.forEach((cartItem) => {
+  cart.forEach((cartItem) => {
   //putting back ticks and copying the html to generate it for every product using ${}.
 
   const productId = cartItem.productId;

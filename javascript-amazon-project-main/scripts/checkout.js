@@ -8,6 +8,3 @@ loadProducts(() => {
     renderOrderSummary();
     renderPaymentSummary();
 });
-
-
-
