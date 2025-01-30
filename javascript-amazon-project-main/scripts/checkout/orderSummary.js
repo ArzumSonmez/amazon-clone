@@ -13,21 +13,21 @@ export function renderOrderSummary() {
   updateCartQuantity();
   let cartSummaryHTML = '';
 
-  cart.forEach((cartItem) => {
-  //putting back ticks and copying the html to generate it for every product using ${}.
-
+cart.forEach((cartItem) => {
   const productId = cartItem.productId;
-
   const matchingProduct = getProduct(productId);
 
+  // 🔹 Checking if the product exists before using it
+  if (!matchingProduct) {
+    console.warn(`Product with ID ${productId} not found in products.`);
+    return; // Skip this item to avoid errors
+  }
+
   const deliveryOptionId = cartItem.deliveryOptionId;
-
   const deliveryOption = getDeliveryOption(deliveryOptionId);
-
   const dateString = calculateDeliveryDate(deliveryOption);
-  
 
-  cartSummaryHTML +=  `
+  cartSummaryHTML += `
     <div class="cart-item-container 
     js-cart-item-container
     js-cart-item-container-${matchingProduct.id}">
